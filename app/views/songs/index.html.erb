@@ -16,7 +16,7 @@
             <tr>
                 <td><a href="/songs/<%= song.id %>"><%= song.artist %></a></td>
                 <td><%= song.title %></td>
-                <td>Placeholder</td>
+                <td><%= song.song_addeds.length %></td>
                 <td>
                     <form action="/songs/add" method="post">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
