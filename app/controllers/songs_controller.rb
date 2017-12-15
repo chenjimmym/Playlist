@@ -22,7 +22,7 @@ class SongsController < ApplicationController
     def show
         @song = Song.find(params[:id])
         # @song.added_users
-        @users = @song.added_users.select(:first_name).group(:first_name, :email).having("count(*) > 1").all.size
+        @users = @song.added_users.select(:first_name, :last_name).group(:first_name, :last_name, :id, :email).having("count(*) > 0").all.size
         puts '$$$$$$$$$$$$$$$$$$$$$', @users
         render 'show'
     end

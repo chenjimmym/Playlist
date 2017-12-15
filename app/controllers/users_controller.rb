@@ -10,7 +10,12 @@ class UsersController < ApplicationController
         end
     end
 
-
+    def show
+        @user = User.find(params[:id])
+        @songs = @user.added_songs.select(:title).group(:artist, :title).having("count(*) > 0").all.size
+        puts "$$$$$$$$$$$", @songs
+        render 'show'
+    end
 
 
     private
