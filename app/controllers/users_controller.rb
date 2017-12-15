@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+    skip_before_action :require_login, only: [:index, :create]
+
+    def index
+        render "index"
+    end
     def create
         @user = User.new(user_params)
         if @user.save
